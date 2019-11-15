@@ -28,6 +28,8 @@ function cleanDb(db) {
 }
 
 async function registerUser(object) {
+  console.log('gonna register user')
+  console.log(object, 'user from register')
   const db = await mongo;
   const simplePlaylists = await Promise.all(object.playlists.map(async playlist => {
     if (playlist) {
@@ -44,8 +46,9 @@ async function registerUser(object) {
       }
     }
   }));
-  await cleanDb(db);
+  //await cleanDb(db);
   await db.collection('users').insertOne({
+  // await db.users.insertOne({
     username: object.username,
     name: object.name,
     email: object.email,

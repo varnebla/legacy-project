@@ -29,9 +29,11 @@ const remove = require('../models/playlistModels/deletePlaylist.js');
 
 module.exports = {
   create: async function (ctx) {
+    console.log(ctx.request.body)
     const req = JSON.parse(ctx.request.body);
     const parsed = engine.parse(req.values, req.tempo)
     const user = await locate(req.username);
+    console.log(user);
     const trackList = engine.init(user[0].playlists);
     const newPlaylist = await create({
       admin : req.username,
@@ -61,10 +63,14 @@ module.exports = {
       .catch(e => console.error(e));
   },
   generate: async function (ctx) {
+    console.log(ctx.request.body);
     const user = await locate(JSON.parse(ctx.request.body).username);
+    console.log(user, 'user');
     const playlist = await get(ctx.params.id);
+    console.log(playlist, 'playlist');
     const copy = JSON.parse(ctx.request.body).copy
     if (user.length && user[0].username === playlist.adminId) {
+      console.log('getting here');
       await generate(playlist, user[0].refresh, ctx.params.id)
       ctx.status = 201;
     } else if (!playlist.adminId) {

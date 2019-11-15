@@ -2,8 +2,8 @@ module.exports = {
   init (playlists) {
     return playlists
       .filter(el => el !== null)
-      .map(el => el.tracks)
-      .reduce((prev, curr) => prev.concat(curr))
+      .map(el => el.tracks)//FIXME 
+      .reduce((prev, curr) => prev.concat(curr), [])
   },
   match (features, source) {
     return features

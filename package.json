@@ -10,15 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "koa": "^2.11.0",
-    "koa-body-parser": "^1.1.2",
-    "koa-cors": "0.0.16",
-    "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0",
-    "mongodb": "^3.3.4",
-    "redis": "^2.8.0",
-    "shortid": "^2.2.15",
-    "spotify-web-api-node": "^4.0.0"
+    "@koa/cors": "^2.2.3",
+    "dotenv": "8.2.0",
+    "koa": "2.11.0",
+    "koa-body-parser": "1.1.2",
+    "koa-router": "7.4.0",
+    "koa-static": "5.0.0",
+    "mongodb": "3.3.4",
+    "redis": "2.8.0",
+    "shortid": "2.2.15",
+    "spotify-web-api-node": "4.0.0"
   }
 }

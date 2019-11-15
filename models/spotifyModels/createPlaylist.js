@@ -4,6 +4,7 @@ const expire = require('../playlistModels/setExpiry.js');
 
 async function generatePlaylist(playlist, refresh, identifier, copy, copier) {
   let playlistId;
+  console.log(playlist);
   let tracks = playlist.tracks.map(el => `spotify:track:${el}`);
   await spotify.setRefreshToken(refresh);
   await spotify.refreshAccessToken()
@@ -14,8 +15,9 @@ async function generatePlaylist(playlist, refresh, identifier, copy, copier) {
   if (!playlist.strict) {
     let seed;
     let attributes;
-    if (playlist.tracks.length <= 5) seed = playlist.tracks;
-    else seed = playlist.tracks.slice(0,5);
+
+    
+    console.log(seed);
     const keys = [
       'dance',
       'energy',
@@ -110,13 +112,20 @@ async function generatePlaylist(playlist, refresh, identifier, copy, copier) {
         limit: (50-playlist.tracks.length),
         seed_tracks: seed
       });
-    let recommended = await spotify.getRecommendations(attributes)
-      .then(res => res.body.tracks.map(el => `spotify:track:${el.id}`));
-    tracks = tracks.concat(recommended);
+      console.log(attributes)
+      let recommended = await spotify.getRecommendations(attributes)
+      .then(res => {
+        console.log('asdasdasdasfasfasfasf========================')
+        res.body.tracks.map(el => `spotify:track:${el.id}`);
+
+      });
+         
+      tracks = tracks.concat(recommended);
   }
   if (!copy) {
     await spotify.createPlaylist(playlist.adminId, playlist.name, {description: 'powered by listmera'})
       .then(res => {
+        console.log(res, 'fromCreatePlaylist')
         playlistId = res.body.id;
       })
       .catch(e => console.error(e));
