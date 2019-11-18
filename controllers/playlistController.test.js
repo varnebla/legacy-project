@@ -12,11 +12,15 @@ jest.mock('../models/userModels/findUser.js', () => {
     return 'username';
   }
 });
+
 jest.mock('../models/userModels/userPlaylistModel.js', () => {
   return jest.fn().mockResolvedValue({})
 });
+
 jest.mock('../models/userModels/removeAdmin.js', () => ({}));
+
 jest.mock('../models/spotifyModels/createPlaylist.js', () => ({}));
+
 jest.mock('../models/playlistModels/createPlaylist.js', () => {
   return jest.fn().mockResolvedValue({})
 });
@@ -46,6 +50,7 @@ describe('playlistController', () => {
       const fakeUser = {
         id: 42
       }
+      
       fakeCreate.mockResolvedValue(fakeUser)
 
       await controller.create(fakeContext);
@@ -70,17 +75,17 @@ describe('playlistController', () => {
     })
   })
   
-  describe('get', () => {
+  describe('get function', () => {
     it('should receive content', async () => {
       const fakeContext = {
         params: {
           id: '2'
         }
       }
+      const tesingContent = fakeDisplay(fakeContext)
     })
+
     
   })
   
-
-
 })

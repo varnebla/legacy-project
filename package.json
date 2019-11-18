@@ -22,5 +22,8 @@
     "shortid": "2.2.15",
     "spotify-web-api-node": "4.0.0",
     "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23"
   }
 }

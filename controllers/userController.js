@@ -8,15 +8,14 @@ const display = require('../models/playlistModels/getDisplayPlaylist.js');
 
 module.exports = {
   get: async function (ctx) {
-    const user = await locate(ctx.headers.user);
-    if (!user[0]) {
-      ctx.status = 401;
-      return;
-    } else {
+    try {
+      const user = await locate(ctx.headers.user);
       user[0].adminOf = await Promise.all(user[0].adminOf.map(async el => await display(el, true)));
       ctx.response.body = user[0];
       ctx.status = 200;
-    }
+    } catch (error) {
+      ctx.status = 401;
+      } 
   },
   modify: async function (ctx) {
     const object = JSON.parse(ctx.request.body);
