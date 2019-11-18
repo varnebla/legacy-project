@@ -20,17 +20,11 @@
     "mongodb": "3.3.4",
     "redis": "2.8.0",
     "shortid": "2.2.15",
-<<<<<<< HEAD
     "spotify-web-api-node": "4.0.0"
   },
   "devDependencies": {
     "jest": "^24.9.0",
-=======
-    "spotify-web-api-node": "4.0.0",
->>>>>>> 3900bb173dccaa94440ff5a30c2e940b7735517a
-    "supertest": "^4.0.2"
-  },
-  "devDependencies": {
+    "supertest": "^4.0.2",
     "@types/jest": "^24.0.23"
   }
 }
