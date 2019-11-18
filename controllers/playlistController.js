@@ -29,11 +29,9 @@ const remove = require('../models/playlistModels/deletePlaylist.js');
 
 module.exports = {
   create: async function (ctx) {
-    console.log(ctx.request.body)
     const req = JSON.parse(ctx.request.body);
     const parsed = engine.parse(req.values, req.tempo)
     const user = await locate(req.username);
-    console.log(user);
     const trackList = engine.init(user[0].playlists);
     const newPlaylist = await create({
       admin : req.username,
@@ -41,7 +39,7 @@ module.exports = {
       tracks : trackList,
     }, parsed);
     ctx.status = await setAsManager({id: newPlaylist, username: req.username})
-    ctx.response.body = {id : newPlaylist};
+    ctx.response.body =  newPlaylist;
   },
   get: async function (ctx) {
     const content = await display(ctx.params.id)

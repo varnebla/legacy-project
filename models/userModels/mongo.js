@@ -11,12 +11,10 @@ if (process.env.MONGODB_URI) {
 
 function database() {
   return new Promise((resolve, reject) => {
-    MongoClient.connect(url, (err, client) => {
+    MongoClient.connect(url,{ useUnifiedTopology: true }, (err, client) => {
       if (err) reject(err);
       console.log('MONGO LIVE');
-      
       var db = client.db('listmera');
-
       resolve(db);
     });
   });
