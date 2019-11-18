@@ -21,11 +21,12 @@ jest.mock('../models/playlistModels/createPlaylist.js', () => {
   return jest.fn().mockResolvedValue({})
 });
 const fakeCreate = require('../models/playlistModels/createPlaylist.js')
+
 jest.mock('../models/playlistModels/getDisplayPlaylist.js', () => {
   return jest.fn().mockResolvedValue({})
 });
-
 const fakeDisplay = require('../models/playlistModels/getDisplayPlaylist.js');
+
 jest.mock('../models/playlistModels/getPlaylistDetails.js', () => ({}));
 jest.mock('../models/playlistModels/createTrackList.js', () => ({}));
 jest.mock('../models/playlistModels/intersectTracks.js', () => ({}));
