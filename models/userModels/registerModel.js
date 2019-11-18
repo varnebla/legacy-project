@@ -48,7 +48,6 @@ async function registerUser(object) {
   }));
   //await cleanDb(db);
   await db.collection('users').insertOne({
-  // await db.users.insertOne({
     username: object.username,
     name: object.name,
     email: object.email,
